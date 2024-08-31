@@ -1,24 +1,29 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { api } from "@/utils/axios";
+import { DOMAIN, api } from "@/utils/axios";
+  
 const router = useRouter();
 const route = useRoute();
 const data = ref(null);
+  
 async function getMenu() {
   const result = await api.menus.findOne(route.params.id);
   console.log(result.data);
   data.value = result.data;
 }
+  
 function setImage() {
-  return `http://localhost:8000/media/${data.value.image_src}`;
+  return `${DOMAIN}/media/${data.value.image_src}`;
 }
+  
 function moveRegister() {
   router.push({
     name: "menus-update",
     params: { id: route.params.id },
   });
 }
+  
 async function deleteMenu() {
   const confirmResult = confirm("삭제하시겠습니까?");
   if (confirmResult) {
