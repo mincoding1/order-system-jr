@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const DOMAIN = "http://localhost:8000";
-//export const DOMAIN = "http://3.37.88.111:8080"
+//export const DOMAIN = "http://3.37.88.111:8000"
 
 const request = axios.create({
   baseURL: `${DOMAIN}/api/v1`,
