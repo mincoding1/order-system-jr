@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { useCommonStore } from "@/stores/common";
 import { useRouter } from "vue-router";
-import { api } from "@/utils/axios";
+import { DOMAIN, api } from "@/utils/axios";
 
 const common = useCommonStore();
 const router = useRouter();
@@ -15,7 +15,7 @@ async function getMenus() {
 }
 
 function setImage(image_src) {
-  return `http://localhost:8000/media/${image_src}`;
+  return `${DOMAIN}/media/${image_src}`;
 }
 
 function moveDetail(id) {
